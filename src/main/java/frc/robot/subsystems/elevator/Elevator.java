@@ -16,4 +16,28 @@ public class Elevator {
     public static Elevator getInstance() {
         return instance;
     }
+
+    public void setSpeed(double speed) {
+        components.getLeftMasterMotor().set(speed);
+        components.getRightMasterMotor().set(speed);
+    }
+
+    public void stop() {
+        setSpeed(0);
+    }
+
+    public double getHeading() {
+        return components.getGyro().getFusedHeading();
+    }
+
+    public double setSpeedByHeading() {
+        if (getHeading() > 45)
+            setSpeed(0.5);
+        else if (getHeading() > 90)
+            setSpeed(0.75);
+        else if (getHeading() > 180)
+            setSpeed(-1);
+        else
+            stop();
+    }
 }
