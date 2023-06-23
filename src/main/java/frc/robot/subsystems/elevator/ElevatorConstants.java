@@ -12,5 +12,9 @@ public class ElevatorConstants {
         static final int RIGHT_SLAVE_2_MOTOR_PORT = 10;
 
         static final int PIGEON_IMU_DEV_NUM = 1;
+
+        static final double PEAK_OUTPUT_FORWARD = 0.8;
+        static final double PEAK_OUTPUT_REVERSE = -0.7;
+        static final double OPEN_LOOP_RAMP = 0.4;
     }
 }

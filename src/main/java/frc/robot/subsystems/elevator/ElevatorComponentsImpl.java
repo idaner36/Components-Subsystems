@@ -68,6 +68,9 @@ public class ElevatorComponentsImpl implements ElevatorComponents {
 
     private TalonFXConfiguration getFalconConfiguration() {
         final TalonFXConfiguration config = new TalonFXConfiguration();
+        config.peakOutputForward = PEAK_OUTPUT_FORWARD;
+        config.peakOutputReverse = PEAK_OUTPUT_REVERSE;
+        config.openloopRamp = OPEN_LOOP_RAMP;
         return config;
     }
 }
