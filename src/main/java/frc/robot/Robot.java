@@ -2,9 +2,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.robotControl.BackgroundCommands;
-import frc.robot.robotControl.DeputyOi;
-import frc.robot.robotControl.DriverOi;
+import frc.robot.subsystems.driveTrain.DriveTrain;
+import frc.robot.subsystems.driveTrain.DriveTrainComponentsImpl;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -13,21 +12,13 @@ import frc.robot.robotControl.DriverOi;
  * project.
  */
 public class Robot extends TimedRobot {
-
-    private DriverOi driverOi;
-    private DeputyOi deputyOi;
-
     /**
      * This function is run when the robot is first started up and should be used for any
      * initialization code.
      */
     @Override
     public void robotInit() {
-
-        new BackgroundCommands();
-
-        driverOi = new DriverOi();
-        deputyOi = new DeputyOi();
+        DriveTrain.initDriveTrain(new DriveTrainComponentsImpl());
     }
 
     /**
