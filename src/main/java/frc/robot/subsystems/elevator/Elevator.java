@@ -30,7 +30,7 @@ public class Elevator {
         return components.getGyro().getFusedHeading();
     }
 
-    public double setSpeedByHeading() {
+    public void setSpeedByHeading() {
         if (getHeading() > 45)
             setSpeed(0.5);
         else if (getHeading() > 90)
