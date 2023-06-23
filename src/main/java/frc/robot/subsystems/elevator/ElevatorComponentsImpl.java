@@ -35,6 +35,7 @@ public class ElevatorComponentsImpl implements ElevatorComponents {
         rightSlave2Motor.follow(rightMasterMotor);
 
         pigeonIMU = new PigeonIMU(PIGEON_IMU_DEV_NUM);
+        pigeonIMU.configFactoryDefault();
     }
 
     @Override
