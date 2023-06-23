@@ -1,5 +1,7 @@
 package frc.robot.subsystems.elevator;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.can.TalonFXConfiguration;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.ctre.phoenix.sensors.PigeonIMU;
 import edu.wpi.first.wpilibj.motorcontrol.MotorController;
@@ -18,21 +20,33 @@ public class ElevatorComponentsImpl implements ElevatorComponents {
     public ElevatorComponentsImpl() {
         leftMasterMotor = new WPI_TalonFX(LEFT_MASTER_MOTOR_PORT);
         leftMasterMotor.configFactoryDefault();
+        leftMasterMotor.configAllSettings(getFalconConfiguration());
+        leftMasterMotor.setNeutralMode(NeutralMode.Brake);
 
         leftSlave1Motor = new WPI_TalonFX(LEFT_SLAVE_1_MOTOR_PORT);
         leftSlave1Motor.follow(leftMasterMotor);
+        leftSlave1Motor.configAllSettings(getFalconConfiguration());
+        leftSlave1Motor.setInverted(true);
 
         leftSlave2Motor = new WPI_TalonFX(LEFT_SLAVE_2_MOTOR_PORT);
         leftSlave2Motor.follow(leftMasterMotor);
+        leftSlave2Motor.configAllSettings(getFalconConfiguration());
+        leftSlave2Motor.setInverted(true);
 
         rightMasterMotor = new WPI_TalonFX(RIGHT_MASTER_MOTOR_PORT);
         rightMasterMotor.configFactoryDefault();
+        rightMasterMotor.configAllSettings(getFalconConfiguration());
+        rightMasterMotor.setNeutralMode(NeutralMode.Brake);
 
         rightSlave1Motor = new WPI_TalonFX(RIGHT_SLAVE_1_MOTOR_PORT);
         rightSlave1Motor.follow(rightMasterMotor);
+        rightSlave1Motor.configAllSettings(getFalconConfiguration());
+        rightSlave1Motor.setInverted(true);
 
         rightSlave2Motor = new WPI_TalonFX(RIGHT_SLAVE_2_MOTOR_PORT);
         rightSlave2Motor.follow(rightMasterMotor);
+        rightSlave2Motor.configAllSettings(getFalconConfiguration());
+        rightSlave2Motor.setInverted(true);
 
         pigeonIMU = new PigeonIMU(PIGEON_IMU_DEV_NUM);
     }
@@ -50,5 +64,10 @@ public class ElevatorComponentsImpl implements ElevatorComponents {
     @Override
     public PigeonIMU getGyro() {
         return pigeonIMU;
+    }
+
+    private TalonFXConfiguration getFalconConfiguration() {
+        final TalonFXConfiguration config = new TalonFXConfiguration();
+        return config;
     }
 }
