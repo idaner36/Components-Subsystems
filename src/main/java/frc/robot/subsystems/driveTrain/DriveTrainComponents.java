@@ -5,9 +5,9 @@ import edu.wpi.first.wpilibj.motorcontrol.MotorController;
 
 public interface DriveTrainComponents {
 
-    MotorController getLeftMasterMotor();
+    MotorController getLeftMotor();
 
-    MotorController getRightMasterMotor();
+    MotorController getRightMotor();
 
     DifferentialDrive getDifferentialDrive();
 }

@@ -4,40 +4,30 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorController;
 
-import static frc.robot.subsystems.driveTrain.DriveTrainConstants.ComponentsConstants.*;
-
 public class DriveTrainComponentsImpl implements DriveTrainComponents {
-    private final WPI_TalonFX leftMasterMotor;
-    private final WPI_TalonFX leftSlaveMotor;
-    private final WPI_TalonFX rightMasterMotor;
-    private final WPI_TalonFX rightSlaveMotor;
+    private final WPI_TalonFX leftMotor;
+    private final WPI_TalonFX rightMotor;
     private final DifferentialDrive differentialDrive;
 
     public DriveTrainComponentsImpl() {
-        leftMasterMotor = new WPI_TalonFX(LEFT_MASTER_MOTOR_PORT);
-        leftMasterMotor.configFactoryDefault();
+        leftMotor = new WPI_TalonFX(DriveTrainConstants.ComponentsConstants.LEFT_MOTOR_PORT);
+        leftMotor.configFactoryDefault();
 
-        leftSlaveMotor = new WPI_TalonFX(LEFT_SLAVE_MOTOR_PORT);
-        leftSlaveMotor.follow(leftMasterMotor);
+        rightMotor = new WPI_TalonFX(DriveTrainConstants.ComponentsConstants.RIGHT_MOTOR_PORT);
+        rightMotor.configFactoryDefault();
 
-        rightMasterMotor = new WPI_TalonFX(RIGHT_MASTER_MOTOR_PORT);
-        rightMasterMotor.configFactoryDefault();
-
-        rightSlaveMotor = new WPI_TalonFX(RIGHT_SLAVE_MOTOR_PORT);
-        rightSlaveMotor.follow(rightMasterMotor);
-
-        differentialDrive = new DifferentialDrive(leftMasterMotor, rightMasterMotor);
+        differentialDrive = new DifferentialDrive(leftMotor, rightMotor);
         differentialDrive.setSafetyEnabled(true);
     }
 
     @Override
-    public MotorController getLeftMasterMotor() {
-        return leftMasterMotor;
+    public MotorController getLeftMotor() {
+        return leftMotor;
     }
 
     @Override
-    public MotorController getRightMasterMotor() {
-        return rightMasterMotor;
+    public MotorController getRightMotor() {
+        return rightMotor;
     }
 
     @Override
